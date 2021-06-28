@@ -13,27 +13,28 @@ These are the steps that I followed to install Docker Desktop:
 
     c.	Run `dism.exe` again.
 
-    d.  Restart system.
+    d.  Restart the system.
 
     See the **Troubleshooting** section for more details.
 3.	Download and run the Linus kernel update package.
 4.	Set WSL2 as the default version.
 5.	Double-click the *Docker Desktop Installer.exe*. 
 ### Troubleshooting
-Running `dism.exe` a second time did not enable the virtual machine feature on my machine. After some research online, I identified the error to be in the Hyper-V settings in Windows Features. The Hyper-V Hypervisor option was grayed out. Enabling this option involved an additional set of steps, as follows:
+Running `dism.exe` a second time did not enable the virtualization feature on my machine. After some research online, I identified the error to be in the Hyper-V settings in Windows Features. The Hyper-V Hypervisor option was grayed out. Enabling this option involved an additional set of steps, as follows:
 1. Type `Systeminfo` in the command terminal. 
 2. In the Hyper-V requirements, confirm that **Virtualization Enabled in Firmware** is No.
 3. Access the BIOS - interrupt startup and press F1 (on my machine).
 4. Navigate to **Security** > **Virtualization** > **Intel(R) Virtualization Technology**.
 5. Select **Enable**.  
-6. Restart system and enable Hyper-V in Windows Feature.
-7. Restart system.
+6. Restart the system and enable Hyper-V in Windows Feature.
+7. Restart the system again and continue with the Docker installation process.
 
 ### Process Improvements
 To a non-technical person, the system requirements section is somewhat ambiguous. The information in the troubleshooting link (shown in the image below) was inadequate. I would add some additional information for this step.
 
-Figure 1. Error Message
-![Error Message](Docker4.png "Error Message")
+**Figure 1. Error Message**
+
+![Error Message](images/docker4.png)
 
 ## Using Docker Desktop
 The Docker Desktop overview section provided the following introduction. 
@@ -64,15 +65,18 @@ The following are a few basic docker commands.
 5. In the command terminal, navigate to the app directory and run the following command:
 > `docker build -t getting-started .`
 
-Figure 2. Build Command Results
-![Build Command](Docker2.png "Build Command Results")
+**Figure 2. Build Command Results**
+
+![Build Command](images/Docker2.png)
+
 I was unable to replicate the next step in the sample application - start an app container using the `docker run -dp 3000:3000 getting-started` command. 
 
 However, I downloaded another app from https://docs.docker.com/desktop/dashboard/ (Example Voting app) and tested the following command
 >   `docker-compose up --build.`
 
-Figure 3. Example Voting App
-![Example Voting](Docker3.png "Example Voting App")
+**Figure 3. Example Voting App**
+
+![Example Voting](images/Docker3.png)
 
 ###  Process Improvements
 A sample application that can demonstrate the use of multiple commands or an end-to-end application will be useful for beginners.
